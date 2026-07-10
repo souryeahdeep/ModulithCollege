@@ -39,12 +39,13 @@ export default function Login() {
     
     // Build API URL from env or use fallback
     const baseApi = import.meta.env.VITE_TEACHER_LOGIN_API;
-    
+
       
     try {
-      const res = await fetch(`${baseApi}?teacherId=${id}&password=${password}`, {
-        method: 'GET',
+      const res = await fetch(`${baseApi}`, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({teacherId:teacherId,password:password})
       });
 
       if (!res.ok) {
@@ -61,11 +62,6 @@ export default function Login() {
         return;
       }
 
-      // On success the backend returns a single TeacherDTO:
-      // { id, teacherId, teacherName, teacherEmail, teacherDateOfBirth, departmentName }.
-      // The timetable page reads its session as { teacherName, teacherId, details, token },
-      // where details.data holds the DTO — mirroring the student flow's shape — so wrap
-      // the DTO the same way here rather than passing it bare.
       const teacherDto = data;
 
       navigate('/teachertimetable', {

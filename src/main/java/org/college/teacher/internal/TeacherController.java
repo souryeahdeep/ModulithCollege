@@ -107,7 +107,7 @@ public class TeacherController {
         }
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<TeacherDTO> login(
             @RequestBody LoginRequest loginRequest) {
 
