@@ -11,8 +11,13 @@
 # Limitations (Tier 1, by design):
 #   - Only catches string-literal usages, not dynamically built URLs
 #     (e.g. `${basePath}/teacher/login` where basePath is a variable)
-#   - Matches on path text, so a coincidental string match unrelated to an
-#     actual API call is possible (rare in practice, but not impossible)
+#   - Filters matches to lines containing an HTTP-call signal (fetch, axios,
+#     apiUrl, http://, etc.) and excludes React Router navigation
+#     (navigate(), <Route>, Link to=) so page routes aren't confused with
+#     backend calls — but this is still line-based: a fetch/axios call
+#     split across multiple lines (e.g. the URL on its own line, separate
+#     from the `axios.get(` call) can be missed since the signal and the
+#     path aren't on the same line.
 # This is meant to catch the common case fast, not be exhaustive — see the
 # AST-based Tier 2 approach for lower false-positive/negative rates.
 
@@ -68,9 +73,18 @@ for entry in "${REMOVED[@]}"; do
       continue
     fi
 
+    # HTTP_SIGNALS: tokens that indicate the line is an actual backend call
+    HTTP_SIGNALS='fetch\(|axios|\.get\(|\.post\(|\.put\(|\.delete\(|\.patch\(|apiUrl|API_URL|baseURL|BASE_URL|http://|https://'
+    # ROUTER_SIGNALS: tokens that mean it's client-side routing, not a backend call,
+    # even though it may share the same path string (e.g. navigate('/teacher-login'))
+    ROUTER_SIGNALS='navigate\(|useNavigate|<Route|Link to=|history\.push\('
+
     matches=$(grep -rn -E "$pattern" \
       --include='*.js' --include='*.jsx' --include='*.ts' --include='*.tsx' \
-      "$dir" 2>/dev/null || true)
+      "$dir" 2>/dev/null \
+      | grep -E "$HTTP_SIGNALS" \
+      | grep -vE "$ROUTER_SIGNALS" \
+      || true)
 
     if [ -n "$matches" ]; then
       found_any=true
