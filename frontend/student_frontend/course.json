@@ -1,0 +1,639 @@
+[
+    {
+        "code": "CT101",
+        "credits": 3,
+        "name": "Programming for Problem Solving",
+        "semester": 1,
+        "department_id": 1
+    },
+    {
+        "code": "CH(CT)101",
+        "credits": 2,
+        "name": "Engineering Chemistry",
+        "semester": 1,
+        "department_id": 1
+    },
+    {
+        "code": "M(CT)101",
+        "credits": 3,
+        "name": "Engineering Mathematics – I",
+        "semester": 1,
+        "department_id": 1
+    },
+    {
+        "code": "HU101",
+        "credits": 2,
+        "name": "Professional Communication",
+        "semester": 1,
+        "department_id": 1
+    },
+    {
+        "code": "HU102",
+        "credits": 2,
+        "name": "Values and Ethics",
+        "semester": 1,
+        "department_id": 1
+    },
+    {
+        "code": "HU103",
+        "credits": 1,
+        "name": "Constitution of India",
+        "semester": 1,
+        "department_id": 1
+    },
+    {
+        "code": "CT191",
+        "credits": 1,
+        "name": "Programming for Problem Solving Lab",
+        "semester": 1,
+        "department_id": 1
+    },
+    {
+        "code": "HU191",
+        "credits": 1,
+        "name": "Professional Communication Lab",
+        "semester": 1,
+        "department_id": 1
+    },
+    {
+        "code": "CH(CT)191",
+        "credits": 1,
+        "name": "Engineering Chemistry Lab",
+        "semester": 1,
+        "department_id": 1
+    },
+    {
+        "code": "ME(CT)191",
+        "credits": 1,
+        "name": "Workshop & Manufacturing Practices Lab",
+        "semester": 1,
+        "department_id": 1
+    },
+    {
+        "code": "CT201",
+        "credits": 3,
+        "name": "Data Structures",
+        "semester": 2,
+        "department_id": 1
+    },
+    {
+        "code": "EE(CT)201",
+        "credits": 3,
+        "name": "Basic Electrical & Electronics Engineering",
+        "semester": 2,
+        "department_id": 1
+    },
+    {
+        "code": "PH(CT)201",
+        "credits": 3,
+        "name": "Engineering Physics",
+        "semester": 2,
+        "department_id": 1
+    },
+    {
+        "code": "M(CT)201",
+        "credits": 3,
+        "name": "Engineering Mathematics – II",
+        "semester": 2,
+        "department_id": 1
+    },
+    {
+        "code": "HU204",
+        "credits": 2,
+        "name": "Environmental Science",
+        "semester": 2,
+        "department_id": 1
+    },
+    {
+        "code": "HU205",
+        "credits": 1,
+        "name": "Indian Knowledge System",
+        "semester": 2,
+        "department_id": 1
+    },
+    {
+        "code": "CT291",
+        "credits": 1,
+        "name": "Data Structures Lab",
+        "semester": 2,
+        "department_id": 1
+    },
+    {
+        "code": "EE(CT)291",
+        "credits": 1,
+        "name": "Basic Electrical & Electronics Engineering Lab",
+        "semester": 2,
+        "department_id": 1
+    },
+    {
+        "code": "HU292",
+        "credits": 1,
+        "name": "Design Thinking Lab",
+        "semester": 2,
+        "department_id": 1
+    },
+    {
+        "code": "PH(CT)291",
+        "credits": 1,
+        "name": "Engineering Physics Lab",
+        "semester": 2,
+        "department_id": 1
+    },
+    {
+        "code": "ME(CT)291",
+        "credits": 1,
+        "name": "Engineering Graphics & Design Lab",
+        "semester": 2,
+        "department_id": 1
+    },
+    {
+        "code": "CT301",
+        "credits": 3,
+        "name": "Computer Organization and Architecture",
+        "semester": 3,
+        "department_id": 1
+    },
+    {
+        "code": "CT302",
+        "credits": 3,
+        "name": "Design and Analysis of Algorithms",
+        "semester": 3,
+        "department_id": 1
+    },
+    {
+        "code": "M(CT)301",
+        "credits": 3,
+        "name": "Discrete Mathematics",
+        "semester": 3,
+        "department_id": 1
+    },
+    {
+        "code": "EC(CT)301",
+        "credits": 3,
+        "name": "Digital Logic and Electronics",
+        "semester": 3,
+        "department_id": 1
+    },
+    {
+        "code": "CT391",
+        "credits": 1,
+        "name": "Computer Organization and Architecture Lab",
+        "semester": 3,
+        "department_id": 1
+    },
+    {
+        "code": "CT392",
+        "credits": 1,
+        "name": "Design and Analysis of Algorithms Lab",
+        "semester": 3,
+        "department_id": 1
+    },
+    {
+        "code": "EC(CT)391",
+        "credits": 1,
+        "name": "Digital Electronics Lab",
+        "semester": 3,
+        "department_id": 1
+    },
+    {
+        "code": "CT393",
+        "credits": 2,
+        "name": "IT Workshop Lab (SciLab/MATLAB/C++)",
+        "semester": 3,
+        "department_id": 1
+    },
+    {
+        "code": "CT401",
+        "credits": 3,
+        "name": "Operating Systems",
+        "semester": 4,
+        "department_id": 1
+    },
+    {
+        "code": "CT402",
+        "credits": 3,
+        "name": "Computer Networks",
+        "semester": 4,
+        "department_id": 1
+    },
+    {
+        "code": "CT403",
+        "credits": 3,
+        "name": "Formal Language and Automata Theory",
+        "semester": 4,
+        "department_id": 1
+    },
+    {
+        "code": "M(CT)401",
+        "credits": 3,
+        "name": "Probability and Statistics",
+        "semester": 4,
+        "department_id": 1
+    },
+    {
+        "code": "HU(CT)401",
+        "credits": 2,
+        "name": "Principles of Management",
+        "semester": 4,
+        "department_id": 1
+    },
+    {
+        "code": "CT491",
+        "credits": 1,
+        "name": "Operating Systems Lab",
+        "semester": 4,
+        "department_id": 1
+    },
+    {
+        "code": "CT492",
+        "credits": 1,
+        "name": "Computer Networks Lab",
+        "semester": 4,
+        "department_id": 1
+    },
+    {
+        "code": "CT493",
+        "credits": 1,
+        "name": "Programming lab using Python",
+        "semester": 4,
+        "department_id": 1
+    },
+    {
+        "code": "M(CT)491",
+        "credits": 1,
+        "name": "Numerical Methods Lab",
+        "semester": 4,
+        "department_id": 1
+    },
+    {
+        "code": "HU(CT)491",
+        "credits": 1,
+        "name": "Soft Skill & Aptitude",
+        "semester": 4,
+        "department_id": 1
+    },
+    {
+        "code": "CT501",
+        "credits": 3,
+        "name": "Artificial Intelligence",
+        "semester": 5,
+        "department_id": 1
+    },
+    {
+        "code": "CT502",
+        "credits": 3,
+        "name": "Database Management Systems",
+        "semester": 5,
+        "department_id": 1
+    },
+    {
+        "code": "CT503",
+        "credits": 4,
+        "name": "Object Oriented Programming using Java",
+        "semester": 5,
+        "department_id": 1
+    },
+    {
+        "code": "CT504A",
+        "credits": 3,
+        "name": "Computer Graphics",
+        "semester": 5,
+        "department_id": 1
+    },
+    {
+        "code": "CT504B",
+        "credits": 3,
+        "name": "Network Security and Cryptography",
+        "semester": 5,
+        "department_id": 1
+    },
+    {
+        "code": "CT504C",
+        "credits": 3,
+        "name": "Compiler Design",
+        "semester": 5,
+        "department_id": 1
+    },
+    {
+        "code": "HU(CT)501",
+        "credits": 2,
+        "name": "Economics for Engineers",
+        "semester": 5,
+        "department_id": 1
+    },
+    {
+        "code": "CT591",
+        "credits": 1,
+        "name": "Artificial Intelligence Lab",
+        "semester": 5,
+        "department_id": 1
+    },
+    {
+        "code": "CT592",
+        "credits": 1,
+        "name": "Database Management Systems Lab",
+        "semester": 5,
+        "department_id": 1
+    },
+    {
+        "code": "CT593",
+        "credits": 1,
+        "name": "Object Oriented Programming using Java Lab",
+        "semester": 5,
+        "department_id": 1
+    },
+    {
+        "code": "CT581",
+        "credits": 2,
+        "name": "Internship/Industrial Training",
+        "semester": 5,
+        "department_id": 1
+    },
+    {
+        "code": "CS101",
+        "credits": 3,
+        "name": "Introduction to Programming and Problem Solving (CSE & Allied)",
+        "semester": 1,
+        "department_id": 2
+    },
+    {
+        "code": "PH101",
+        "credits": 3,
+        "name": "Engineering Physics",
+        "semester": 1,
+        "department_id": 2
+    },
+    {
+        "code": "M101",
+        "credits": 3,
+        "name": "Engineering Mathematics-I",
+        "semester": 1,
+        "department_id": 2
+    },
+    {
+        "code": "HU101",
+        "credits": 2,
+        "name": "Environmental Science",
+        "semester": 1,
+        "department_id": 2
+    },
+    {
+        "code": "HU102",
+        "credits": 1,
+        "name": "Indian Knowledge System",
+        "semester": 1,
+        "department_id": 2
+    },
+    {
+        "code": "CS191",
+        "credits": 1,
+        "name": "Introduction to Programming and Problem-Solving Lab (CSE & Allied)",
+        "semester": 1,
+        "department_id": 2
+    },
+    {
+        "code": "PH191",
+        "credits": 1,
+        "name": "Engineering Physics Lab",
+        "semester": 1,
+        "department_id": 2
+    },
+    {
+        "code": "ME194",
+        "credits": 1,
+        "name": "Engineering Graphics & Computer Aided Design Lab",
+        "semester": 1,
+        "department_id": 2
+    },
+    {
+        "code": "HU191",
+        "credits": 1,
+        "name": "Communication & Presentation Skill",
+        "semester": 1,
+        "department_id": 2
+    },
+    {
+        "code": "MC181",
+        "credits": 0,
+        "name": "Induction Program",
+        "semester": 1,
+        "department_id": 2
+    },
+    {
+        "code": "CS201",
+        "credits": 3,
+        "name": "Data structure and Algorithms",
+        "semester": 2,
+        "department_id": 2
+    },
+    {
+        "code": "CS202",
+        "credits": 2,
+        "name": "Introduction to Artificial Intelligence",
+        "semester": 2,
+        "department_id": 2
+    },
+    {
+        "code": "CS203",
+        "credits": 3,
+        "name": "Digital Logic and Computer Organization",
+        "semester": 2,
+        "department_id": 2
+    },
+    {
+        "code": "CH201",
+        "credits": 2,
+        "name": "Engineering Chemistry",
+        "semester": 2,
+        "department_id": 2
+    },
+    {
+        "code": "M201",
+        "credits": 3,
+        "name": "Engineering Mathematics-II",
+        "semester": 2,
+        "department_id": 2
+    },
+    {
+        "code": "HU202",
+        "credits": 1,
+        "name": "Constitution of India & Professional Ethics",
+        "semester": 2,
+        "department_id": 2
+    },
+    {
+        "code": "HU203",
+        "credits": 1,
+        "name": "Design Thinking & Innovation",
+        "semester": 2,
+        "department_id": 2
+    },
+    {
+        "code": "CS291",
+        "credits": 1,
+        "name": "Data structure & Algorithms Lab",
+        "semester": 2,
+        "department_id": 2
+    },
+    {
+        "code": "CS292",
+        "credits": 1,
+        "name": "Artificial Intelligence Lab",
+        "semester": 2,
+        "department_id": 2
+    },
+    {
+        "code": "CS293",
+        "credits": 1,
+        "name": "Digital Logic and Computer Organization Lab",
+        "semester": 2,
+        "department_id": 2
+    },
+    {
+        "code": "CH291",
+        "credits": 1,
+        "name": "Engineering Chemistry Lab",
+        "semester": 2,
+        "department_id": 2
+    },
+    {
+        "code": "ME293",
+        "credits": 1,
+        "name": "IDEA LAB Workshop",
+        "semester": 2,
+        "department_id": 2
+    },
+    {
+        "code": "CS301",
+        "credits": 3,
+        "name": "Computer Architecture",
+        "semester": 3,
+        "department_id": 2
+    },
+    {
+        "code": "CS302",
+        "credits": 3,
+        "name": "Design and Analysis of Algorithms",
+        "semester": 3,
+        "department_id": 2
+    },
+    {
+        "code": "CS303",
+        "credits": 3,
+        "name": "Operating Systems",
+        "semester": 3,
+        "department_id": 2
+    },
+    {
+        "code": "CS304",
+        "credits": 3,
+        "name": "Advanced Artificial Intelligence",
+        "semester": 3,
+        "department_id": 2
+    },
+    {
+        "code": "EC(CS)301",
+        "credits": 3,
+        "name": "Internet of Things",
+        "semester": 3,
+        "department_id": 2
+    },
+    {
+        "code": "M(CS)301",
+        "credits": 3,
+        "name": "Discrete Mathematics",
+        "semester": 3,
+        "department_id": 2
+    },
+    {
+        "code": "CS391",
+        "credits": 1,
+        "name": "Computer Architecture Lab",
+        "semester": 3,
+        "department_id": 2
+    },
+    {
+        "code": "CS392",
+        "credits": 1,
+        "name": "Design and Analysis of Algorithms Lab",
+        "semester": 3,
+        "department_id": 2
+    },
+    {
+        "code": "CS393",
+        "credits": 1,
+        "name": "Operating Systems Lab",
+        "semester": 3,
+        "department_id": 2
+    },
+    {
+        "code": "CS394",
+        "credits": 1,
+        "name": "Advanced Artificial Intelligence Lab",
+        "semester": 3,
+        "department_id": 2
+    },
+    {
+        "code": "CS395",
+        "credits": 2,
+        "name": "Python Programming Lab",
+        "semester": 3,
+        "department_id": 2
+    },
+    {
+        "code": "EC(CS)391",
+        "credits": 1,
+        "name": "Internet of Things lab",
+        "semester": 3,
+        "department_id": 2
+    },
+    {
+        "code": "CS401",
+        "credits": 3,
+        "name": "Database Management Systems",
+        "semester": 4,
+        "department_id": 2
+    },
+    {
+        "code": "CS402",
+        "credits": 3,
+        "name": "Computer Networks",
+        "semester": 4,
+        "department_id": 2
+    },
+    {
+        "code": "CS403",
+        "credits": 3,
+        "name": "Machine Learning",
+        "semester": 4,
+        "department_id": 2
+    },
+    {
+        "code": "CS404",
+        "credits": 3,
+        "name": "Formal Language and Automata Theory",
+        "semester": 4,
+        "department_id": 2
+    },
+    {
+        "code": "M(CS)401",
+        "credits": 3,
+        "name": "Probability and Statistics",
+        "semester": 4,
+        "department_id": 2
+    },
+    {
+        "code": "CS491",
+        "credits": 1,
+        "name": "Database Management Systems Lab",
+        "semester": 4,
+        "department_id": 2
+    },
+    {
+        "code": "CS492",
+        "credits": 1,
+        "name": "Computer Networks Lab",
+        "semester": 4,
+        "department_id": 2
+    }
+]
