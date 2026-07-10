@@ -1,0 +1,57 @@
+# .github/workflows/api-contract-update-baseline.yml
+#
+# Runs after a PR is merged into main. Regenerates the OpenAPI spec from
+# the now-current main branch and commits it back as openapi/spec.json —
+# this becomes the baseline the next PR's spec gets diffed against.
+
+name: API Contract Guard — Update Baseline
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'pom.xml'
+      - 'build.gradle'
+
+jobs:
+  update-baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build application
+        run: mvn -B -q -DskipTests package
+
+      - name: Start application (CI profile)
+        run: |
+          nohup java -jar target/*.jar \
+            --spring.profiles.active=ci \
+            --server.port=8080 > app.log 2>&1 &
+          echo $! > app.pid
+
+      - name: Wait for application to be ready
+        run: |
+          chmod +x ci/wait-for-http.sh
+          ci/wait-for-http.sh http://localhost:8080/v3/api-docs 60
+
+      - name: Generate OpenAPI spec
+        run: mkdir -p openapi && curl -sf http://localhost:8080/v3/api-docs -o openapi/spec.json
+
+      - name: Stop application
+        if: always()
+        run: kill "$(cat app.pid)" || true
+
+      - name: Commit updated baseline
+        run: |
+          git config user.name "api-contract-guard-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add openapi/spec.json
+          git diff --cached --quiet || git commit -m "chore: update OpenAPI baseline spec [skip ci]"
+          git push
