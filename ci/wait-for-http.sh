@@ -1,29 +1,28 @@
-# src/main/resources/application-ci.yml
+#!/usr/bin/env bash
 #
-# Purpose: let the app start up in CI with zero external dependencies,
-# just long enough to serve /v3/api-docs. Customize the datasource /
-# disabled beans to match what your actual project needs to boot.
+# wait-for-http.sh <url> <timeout_seconds>
+#
+# Polls a URL every 2s until it returns success or the timeout is hit.
+# On timeout, dumps app.log (if present) so the CI failure is debuggable
+# instead of just saying "timed out."
 
-spring:
-  datasource:
-    url: jdbc:h2:mem:ci;DB_CLOSE_DELAY=-1
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    open-in-view: false
+set -euo pipefail
 
-  # If your app calls out to other services (Kafka, Redis, external APIs,
-  # feature-flag providers, etc.), either:
-  #   1. Point them at a lightweight local stand-in (Testcontainers, embedded broker), or
-  #   2. Wire a @Profile("ci") stub bean that no-ops instead of connecting.
-  # springdoc only needs the Spring context to fully start — it doesn't
-  # care whether those integrations are "real."
+URL="${1:?Usage: wait-for-http.sh <url> <timeout_seconds>}"
+TIMEOUT="${2:-60}"
+ELAPSED=0
 
-springdoc:
-  api-docs:
-    enabled: true
-  swagger-ui:
-    enabled: false   # not needed in CI, one less thing to boot
+echo "Waiting for $URL to become available (timeout ${TIMEOUT}s)..."
+
+until curl -sf "$URL" > /dev/null 2>&1; do
+  if [ "$ELAPSED" -ge "$TIMEOUT" ]; then
+    echo "Timed out waiting for $URL after ${TIMEOUT}s"
+    echo "---- app.log ----"
+    cat app.log 2>/dev/null || echo "(no app.log found)"
+    exit 1
+  fi
+  sleep 2
+  ELAPSED=$((ELAPSED + 2))
+done
+
+echo "$URL responded after ${ELAPSED}s"
