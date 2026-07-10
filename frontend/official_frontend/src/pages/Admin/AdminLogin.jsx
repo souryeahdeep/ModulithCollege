@@ -21,15 +21,9 @@ const AdminLogin = () => {
 
     setLoading(true);
 
-    // API URL can be provided via Vite env: VITE_ADMIN_LOGIN_API
-    // Fallback to http://localhost:8080/admin/login
 
     try {
-      
-      // Construct URL with ID as path parameter: /admin/{id}
-      console.log(username,password,id);
-      
-
+            
       const res = await fetch( "http://localhost:8080/admin/login", {
         method: "POST",
         headers: {

@@ -45,7 +45,7 @@ export default function Login() {
       const res = await fetch(`${baseApi}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({teacherId:teacherId,password:password})
+        body: JSON.stringify({teacherId:id,password:password})
       });
 
       if (!res.ok) {
