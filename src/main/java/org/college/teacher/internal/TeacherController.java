@@ -2,6 +2,7 @@ package org.college.teacher.internal;
 
 import org.college.api.ApiResponse;
 import org.college.teacher.api.CreateTeacherRequest;
+import org.college.teacher.api.LoginRequest;
 import org.college.teacher.api.TeacherDTO;
 import org.college.timetable.api.TimetableEntryDTO;
 import org.slf4j.Logger;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174"})
 @RestController
-@RequestMapping("/api/teacher")
+@RequestMapping("/teacher")
 public class TeacherController {
 
     private static final Logger log =
@@ -108,14 +109,13 @@ public class TeacherController {
 
     @GetMapping("/login")
     public ResponseEntity<TeacherDTO> login(
-            @RequestParam String teacherId,
-            @RequestParam String password) {
+            @RequestBody LoginRequest loginRequest) {
 
-        log.info("Login attempt for Teacher ID={}", teacherId);
+        log.info("Login attempt for Teacher ID={}", loginRequest.teacherId());
 
-        TeacherDTO teacher = teacherService.login(teacherId, password);
+        TeacherDTO teacher = teacherService.login(loginRequest.teacherId(), loginRequest.password());
 
-        log.info("Login completed for Teacher ID={}", teacherId);
+        log.info("Login completed for Teacher ID={}", loginRequest.teacherId());
 
         return ResponseEntity.ok(teacher);
     }
