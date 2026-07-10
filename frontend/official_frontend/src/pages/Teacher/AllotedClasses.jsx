@@ -20,9 +20,8 @@ const AllotedClasses = () => {
       }`;
     setLoadingClassId(classIdentifier);
 
-    const apiUrl = `http://localhost:8081/teacher/start`;
-    console.log(apiUrl);
-     
+    const apiUrl = `http://localhost:8080/api/teacher/start`;
+
     // Build request payload expected by the API when starting attendance.
     const payload = {
       stream: cls.streamCode || cls.stream,

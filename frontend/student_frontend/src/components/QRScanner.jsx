@@ -65,7 +65,7 @@ export default function QRScanner({
       const coordinates = await captureCoordinates();
 
       const response = await fetch(
-        "http://localhost:8081/teacher/attendance/scan",
+        "http://localhost:8081/api/teacher/attendance/scan",
         {
           method: "POST",
           headers: {
