@@ -63,9 +63,10 @@ export default function QRScanner({
 
     try {
       const coordinates = await captureCoordinates();
-
+      console.log(studentName, studentId, qrToken, coordinates);
+      
       const response = await fetch(
-        "http://localhost:8081/api/teacher/attendance/scan",
+        "http://localhost:8080/api/attendance/scan",
         {
           method: "POST",
           headers: {

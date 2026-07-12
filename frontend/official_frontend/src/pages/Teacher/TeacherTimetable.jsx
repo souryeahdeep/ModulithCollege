@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AlertTriangle, Bell, BookOpen, CalendarX2, Clock, Loader2, MapPin, RefreshCw, Users } from "lucide-react";
 
 const DAY_ORDER = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"];
@@ -53,7 +53,6 @@ function todayKey() {
 // scalar `dayOfWeek`, not a list), so a full week means one call per grid
 // day, fired in parallel and merged into one flat list.
 async function fetchTeacherTimetable({ teacherId }) {
-  console.log("fetchTeacherTimetable: teacherId:", teacherId);
   const results = await Promise.all(
     GRID_DAYS.map(async (d) => {
       const response = await fetch(`http://localhost:8080/api/timetable/teacher`, {
@@ -83,8 +82,16 @@ function getDayIndex(dayOfWeek) {
 }
 
 function WeeklyGrid({ entries }) {
+  const navigate = useNavigate();
   const ticks = hourTicks();
   const today = todayKey();
+
+  // Clicking a class block sends the exact entry object shown in the grid
+  // over to the alloted-classes page, which forwards it as-is to
+  // /api/attendance/start.
+  const handleEntryClick = (entry) => {
+    navigate("/alloted-classes", { state: { entry } });
+  };
 
   if (entries.length === 0) {
     return (
@@ -95,8 +102,6 @@ function WeeklyGrid({ entries }) {
       </div>
     );
   }
-  console.log(entries);
-  
 
   return (
     <div className="overflow-x-auto rounded-lg border border-slate-200 bg-white shadow-sm">
@@ -129,7 +134,8 @@ function WeeklyGrid({ entries }) {
           >
             <span className="relative -top-2 block">{t.label}</span>
           </div>
-        ))}    
+        ))}
+
         {GRID_DAYS.map((d, i) =>
           Array.from({ length: gridTotalRows }).map((_, r) => (
             <div
@@ -139,18 +145,28 @@ function WeeklyGrid({ entries }) {
             />
           ))
         )}
+
         {entries.map((e) => {
           const dayIndex = GRID_DAYS.findIndex((d) => d.key === e.dayOfWeek);
           if (dayIndex === -1 || !e.startTime || !e.endTime) return null;
           const style = ENTRY_STYLES[e.entryType] || DEFAULT_ENTRY_STYLE;
-          const cohort = [e.branch, e.courseCode ,e.classroomNo,e.sectionNo != null ? `Sec ${e.sectionNo}` : null].filter(Boolean).join(" · ");
+          const cohort = [e.branch, e.courseCode, e.classroomNo, e.sectionNo != null ? `Sec ${e.sectionNo}` : null].filter(Boolean).join(" · ");
 
           return (
             <div
               key={e.id ?? `${e.courseName}-${e.dayOfWeek}-${e.startTime}`}
-              className={`relative m-0.5 flex flex-col overflow-hidden rounded-md border ${style.border} ${style.fill} shadow-sm`}
+              role="button"
+              tabIndex={0}
+              onClick={() => handleEntryClick(e)}
+              onKeyDown={(ev) => {
+                if (ev.key === "Enter" || ev.key === " ") {
+                  ev.preventDefault();
+                  handleEntryClick(e);
+                }
+              }}
+              className={`relative m-0.5 flex cursor-pointer flex-col overflow-hidden rounded-md border ${style.border} ${style.fill} shadow-sm transition hover:brightness-95 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-amber-400`}
               style={{ gridColumn: dayIndex + 2, gridRow: `${rowOf(e.startTime)} / span ${spanOf(e.startTime, e.endTime)}` }}
-              title={`${e.courseName} · ${cohort} · Room ${e.classroomNo}`}
+              title={`${e.courseName} · ${cohort} · Room ${e.classroomNo} — click to start attendance`}
             >
               <div className={`flex items-center justify-between px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white ${style.tab}`}>
                 <span>{style.abbr}</span>
@@ -197,7 +213,7 @@ export default function TeacherTimetablePage() {
     details: initialDetails,
     token: tokenFromState,
   } = location.state || {};
-  
+
   // location.state can arrive empty on the very first navigation (e.g. the
   // sending page passed a stale/undefined value before its own state
   // finished updating). Fall back to a cached copy in sessionStorage so the
@@ -222,7 +238,7 @@ export default function TeacherTimetablePage() {
   const teacherDetails = session?.details;
   const teacherId = session?.teacherId ?? teacherDetails?.data?.teacherId;
   const teacherName = teacherNameFromState ?? teacherDetails?.data?.teacherName;
-  console.log("TeacherTimetablePage: teacherId:", teacherId, "teacherName:", teacherName, "details:", teacherDetails);
+
   // Whenever a real, non-empty location.state shows up (including on a
   // later render, e.g. after the sending page's state finished updating),
   // adopt it and cache it for next time.

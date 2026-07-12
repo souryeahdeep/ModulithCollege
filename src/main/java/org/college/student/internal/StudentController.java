@@ -35,15 +35,11 @@ public class StudentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(studentService.deleteStudent(id));
     }
 
-
-    // APIs used by Teacher and Admin
-    // GET /student/get?branch=...&semester=...
     @GetMapping(value = "/get", params = {"branch", "semester"})
     public ResponseEntity<List<StudentDTO>> getAllStudents(@RequestParam String branch, @RequestParam Integer semester) {
         return ResponseEntity.ok().body(studentService.fetchStudentsByBranchAndSem(branch, semester));
     }
 
-    // GET /student/get?branch=...&year=...&group=...&section=...
     @GetMapping(value = "/get")
     public ResponseEntity<List<StudentDTO>> getAllStudents(@RequestParam String branch,
                                                            @RequestParam Integer sem,
@@ -67,18 +63,14 @@ public class StudentController {
         return ResponseEntity.ok().body(studentService.fetchStudents(page));
     }
 
-
-    // APIs used by Admin and Student
     @PutMapping("/update")
     public ResponseEntity<Boolean> updateStudent(@RequestBody List<StudentDTO> studentDTOS) {
         return ResponseEntity.ok().body(studentService.updateStudent(studentDTOS));
 
     }
 
-
-    //APIs used by Teacher
     @PostMapping("/increase-attendance")
-    public ResponseEntity<Boolean> increaseAttendance(@RequestParam String studentId) {
+    public ResponseEntity<ApiResponse<String>> increaseAttendance(@RequestParam String studentId) {
         return ResponseEntity.status(HttpStatus.CREATED).body(studentService.increaseAttendance(studentId));
     }
 

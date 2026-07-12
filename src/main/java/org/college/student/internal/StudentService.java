@@ -83,16 +83,16 @@ public class StudentService {
     }
 
 
-    public boolean increaseAttendance(String studentId) {
+    public ApiResponse<String> increaseAttendance(String studentId) {
         Student student = studentRepo.findByStudentId(studentId);
         if (student == null) {
-            return false;
+            return new ApiResponse<>(false,"Student not found in successfully",null);
         } else {
             student.setPresent(student.getPresent() + 1);
             studentRepo.save(student);
             log.info("Attendance Marked Successfully");
         }
-        return true;
+        return new ApiResponse<>(true,"Attendance Marked Successfully",null);
     }
 
     public List<StudentDTO> fetchStudentsByBranchAndSem(String branch, Integer sem) {

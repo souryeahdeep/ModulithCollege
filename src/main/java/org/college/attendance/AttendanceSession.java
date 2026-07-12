@@ -1,8 +1,6 @@
 package org.college.attendance;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.college.timetable.internal.TimetableEntryType;
@@ -18,6 +16,7 @@ import java.util.UUID;
 @Table(name = "attendance_session")
 public class AttendanceSession {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID attendanceId;
     private String courseCode;
     private String courseName;
