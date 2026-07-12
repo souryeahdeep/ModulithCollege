@@ -4,7 +4,7 @@
 # the now-current main branch and commits it back as openapi/spec.json —
 # this becomes the baseline the next PR's spec gets diffed against.
 
-name: API Contract Guard — Update Baseline
+name: APISentry — Update Baseline
 
 on:
   push:
@@ -50,7 +50,7 @@ jobs:
 
       - name: Commit updated baseline
         run: |
-          git config user.name "api-contract-guard-bot"
+          git config user.name "api-apisentry-bot"
           git config user.email "bot@users.noreply.github.com"
           git add openapi/spec.json
           git diff --cached --quiet || git commit -m "chore: update OpenAPI baseline spec [skip ci]"
