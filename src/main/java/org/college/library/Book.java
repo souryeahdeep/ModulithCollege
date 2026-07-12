@@ -29,10 +29,7 @@ public class Book {
 
     @Column(nullable = false)
     private Integer totalCopies;
-
-    // Decremented on issue, incremented on return. Kept on the entity
-    // (rather than computed on the fly) so availability checks are a
-    // single-row read instead of a count query over book_issues.
+    
     @Column(nullable = false)
     private Integer availableCopies;
 
@@ -46,5 +43,9 @@ public class Book {
         this.isbn = isbn;
         this.totalCopies = totalCopies;
         this.availableCopies = totalCopies;
+    }
+
+    public boolean hasAvailableCopy() {
+        return availableCopies > 0;
     }
 }
