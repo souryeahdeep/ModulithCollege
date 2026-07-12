@@ -26,11 +26,15 @@ public class QrJwtUtil {
 
     public String generateQrToken(AttendanceSession attendanceSession) {
         Map<String,Object> map = new HashMap<>();
-        map.put("attendanceId",attendanceSession.getAttendanceId());
+        map.put("attendanceId",attendanceSession.getAttendanceId().toString());
         map.put("branch",attendanceSession.getBranch());
         map.put("teacherName",attendanceSession.getTeacherName());
         map.put("group",attendanceSession.getGroupNo());
         map.put("section",attendanceSession.getSectionNo());
+        map.put("startTime",attendanceSession.getStartTime().toString());
+        map.put("endTime",attendanceSession.getExpiryTime().toString());
+        map.put("dayOfWeek",attendanceSession.getDayOfWeek());
+        map.put("classRoomNo",attendanceSession.getClassroomNo());
         return Jwts.builder()
                 .claims(map)
                 .expiration(
@@ -40,28 +44,12 @@ public class QrJwtUtil {
                 .compact();
     }
 
-    public Map<String, Object> validateAndGetAttendanceId(String token) {
-
-        try {
-            Jws<Claims> claimsJws = Jwts.parser()
-                    .verifyWith((SecretKey) key) // use the same key to verify HS256 signatures
-                    .build()
-                    .parseSignedClaims(token);
-            Claims claims = claimsJws.getPayload();
-            Map<String,Object> map = new HashMap<>();
-            map.put("attendanceId",claims.get("attendanceId", String.class));
-            map.put("classId",claims.get("classId", String.class));
-            map.put("teacherId",claims.get("teacherId", String.class));
-            map.put("group",claims.get("group", String.class));
-            map.put("section",claims.get("section", String.class));
-            map.put("semester",claims.get("semester", String.class));
-            return map;
-
-        } catch (JwtException ex) {
-            // covers: expired, malformed, unsupported, signature invalid
-            throw new RuntimeException("Invalid or expired QR code", ex);
-        }
+    public Claims validate(String token) {
+        return Jwts.parser()
+                .verifyWith((SecretKey) key)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
-
 }
 

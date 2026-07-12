@@ -1,5 +1,6 @@
 package org.college.student.internal;
 
+import org.college.api.ApiResponse;
 import org.college.student.api.StudentManagement;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class StudentManagementImpl implements StudentManagement {
     }
 
     @Override
-    public boolean increaseAttendance(String studentId) {
+    public ApiResponse<String> increaseAttendance(String studentId) {
 
         return studentService.increaseAttendance(studentId);
     }

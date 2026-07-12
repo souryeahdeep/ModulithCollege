@@ -19,7 +19,7 @@ const LoginPage = () => {
 
     setLoading(true);
 
-    const url = `http://localhost:8080/student/login?studentId=${encodeURIComponent(
+    const url = `http://localhost:8080/api/student/login?studentId=${encodeURIComponent(
       studentId.trim(),
     )}&password=${encodeURIComponent(studentPassword.trim())}`;
 
